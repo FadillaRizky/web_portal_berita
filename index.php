@@ -50,6 +50,15 @@
                          case 'edit_berita':
                             include "pages/master_berita/edit_berita.php";
                             break;
+                        case 'kategori':
+                            include "pages/kategori/kategori.php";
+                            break;
+                        case 'add_kategori':
+                            include "pages/kategori/add_kategori.php";
+                            break;
+                        case 'edit_kategori':
+                            include "pages/kategori/edit_kategori.php";
+                            break;
                         default:
                             echo "<h1> 404, error </h1>
                             <h3> Halaman yang anda cari tidak ditemukan </h3> ";

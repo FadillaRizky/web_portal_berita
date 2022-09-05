@@ -26,6 +26,8 @@
         <!-- main content -->
             <div class="row map-content-9">
                 <div class="info-grids">
+                    <!-- action = file tujuan untuk submit data -->
+                    <!-- method = menentukan bagaimana cara mengirimkan datanya -->
                     <form action="actions/aksi_login.php" method="post" class="">
                         <div class="form-grid">
                             <div class="input-field">

@@ -1,13 +1,16 @@
 <?php 
  
     include "../connection.php";
- 
+//  jika nilai yang dikirimkan itu ada
     if (isset($_POST)) {
+        // maka ambil semua nilai termasuk username dan password dan masukan ke masing2 variabel 
         $username = $_POST['username'];
         $password = $_POST['password'];
- 
+        
+        // menentukan perintah untk memanggil data user berdasarkan username dan password 
         $query = "SELECT * FROM admin WHERE username='$username' AND password=md5('$password')";
- 
+        
+        // eksekusi perintahnya
         $result = mysqli_query($conn,$query) or die (mysqli_error($conn));
         // ambil 1 object ketika data sudah berhasil di fetch/ di panggil
         $data = mysqli_fetch_assoc($result);

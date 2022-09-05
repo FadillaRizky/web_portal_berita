@@ -1,7 +1,7 @@
 <div class="container-fluid px-4">
-    <h1 class="mt-4">Master Berita</h1>
+    <h1 class="mt-4">Kelola Kategori</h1>
     <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item active">Master Berita</li>
+        <li class="breadcrumb-item active">Kelola Kategori</li>
     </ol>
     <div class="card mb-4">
         <div class="card-header">
@@ -11,8 +11,8 @@
             DataTable Example
         </div>
         <div class="card-body">
-            <a href="index.php?page=add_berita" class="btn btn-primary mb-3">Tambah Data Berita</a>
-            <a href="index.php?page=kategori" class="btn btn-warning mb-3">Kelola Kategori</a>
+            <a href="index.php?page=add_kategori" class="btn btn-primary mb-3">Tambah Kategori</a>
+            <a href="index.php?page=master_berita" class="btn btn-success mb-3">Done</a>
             <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
 
                 <div class="dataTable-container">
@@ -20,11 +20,8 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Judul</th>
-                                <th>Tanggal</th>
+                                <th>Kode Kategori</th>
                                 <th>Kategori</th>
-                                <th>Isi</th>
-                                <th>Gambar</th>
                                 <th>Aksi</th>
 
                             </tr>
@@ -35,7 +32,7 @@
                             // * semua kolom database
                             // menampilkan beberapa kolom contohnya : SELECT judul,isi FROM berita
                             // menampilkan data berita yang direlasikan dengan tabel kategori dengan kolom id_berita,judul,dll
-                            $select = "SELECT id_berita,judul,tanggal,kategori.kategori,isi,gambar FROM berita INNER JOIN kategori ON berita.kode_kategori = kategori.kode_kategori";
+                            $select = "SELECT kode_kategori,kategori FROM kategori ";
                             // eksekusi query select jika error maka tampilan error database nya 
                             $query = mysqli_query($conn, $select) or die(mysqli_error($conn));
 
@@ -46,14 +43,11 @@
                             ?>
                                 <tr>
                                     <td><?=$no++ ?></td>
-                                    <td><?=$row['judul'] ?></td>
-                                    <td><?=$row['tanggal'] ?></td>
+                                    <td><?=$row['kode_kategori'] ?></td>
                                     <td><?=$row['kategori'] ?></td>
-                                    <td><?= substr ($row['isi'],0,250) ?></td>
-                                    <td> <img src="images/<?= $row['gambar'] ?>" alt="gambar produk" width="100" height="100"></td>
                                     <td>
-                                        <a class="btn btn-warning mb-2" href="index.php?page=edit_berita&id_berita=<?php echo $row['id_berita'] ?>"><i class="fa-solid fa-pen-to-square"></i>  Edit</a><br>
-                                        <a class="btn btn-danger " href="actions/delete_berita.php?id_berita=<?php echo $row['id_berita'] . '&gambar=' . $row['gambar'] ?>"><i class="fa-solid fa-trash-can"></i>   Hapus</a>
+                                        <a class="btn btn-warning mb-2" href="index.php?page=edit_kategori&kode_kategori=<?php echo $row['kode_kategori'] ?>"><i class="fa-solid fa-pen-to-square"></i>  Edit</a><br>
+                                        <a class="btn btn-danger " href="actions_kategori/delete_kategori.php?id_berita=<?php echo $row['kode_kategori'] . '&gambar=' . $row['gambar'] ?>"><i class="fa-solid fa-trash-can"></i>   Hapus</a>
                                     </td>
                                 </tr>
                             <?php

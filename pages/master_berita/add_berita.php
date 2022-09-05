@@ -17,10 +17,19 @@
 <div class="mb-3">
     <label for="inputKategori" class="form-label" >Kategori</label>
    <select name="kategori" id="inputKategori" class="form-control" >
-    <option value="LifeStyle">LifeStyle</option>
-    <option value="Sport">Sport</option>
-    <option value="Politik">Politik</option>
+    <?php
+        include "connection.php";
+
+        $selectKategori = "SELECT * FROM kategori";
+        $query =mysqli_query($conn,$selectKategori) or die(mysqli_error($conn));
+        while($row = mysqli_fetch_array($query) ){
+
+    ?>
+    <option value="<?= $row['kode_kategori']?>"> <?= $row ['kategori']?></option>
+    <?php  }
+   ?>
    </select>
+
 </div>
 <div class="mb-3">
     <label for="inputIsi" class="form-label">Isi</label>
